@@ -16,21 +16,23 @@ const guessedDom = document.getElementById('guessed');
 let numbersGenerated = [];
 let numbersPrompted = [];
 
-numbersGenerated =  howManyNumbers(5, 1, 10);
+numbersGenerated =  uniqueHowManyNumbers(5, 1, 25);
 numbersDom.innerHTML = numbersGenerated;
 
 //dopo 30 secondi i numeri scompaiono
 
 setTimeout(function(){
     numbersDom.classList.add('d-none');
-}, 3000);
+// }, 3000);
+}, 30000);
 
 setTimeout(function(){
     numbersPrompted = askPromptReturnArray(5);
     console.log(numbersPrompted);
     verifyArray(numbersGenerated, numbersPrompted);
     
-}, 3100);
+// }, 3100);
+}, 31000);
  
 
 
@@ -66,10 +68,29 @@ function askPromptReturnArray(howManyPrompt){
     return numbersPrompted;
 }
 
-function howManyNumbers(quantity, min, max){
+// function howManyNumbers(quantity, min, max){
+//     let numbers = [];
+//     for(i = 0; i < quantity; i++){
+//         numbers.push(randomNumber(min, max));
+//     }
+//     return numbers;
+// }
+
+function uniqueHowManyNumbers(quantity, min, max){
     let numbers = [];
+    
     for(i = 0; i < quantity; i++){
-        numbers.push(randomNumber(min, max));
+        
+        let valid = false;
+        let randomNumberGenerated = 0;
+        while(!valid){
+            randomNumberGenerated = randomNumber(min, max);
+            if(!numbers.includes(randomNumberGenerated)){
+                numbers.push(randomNumberGenerated);
+                valid = true;
+            }
+        }
+
     }
     return numbers;
 }
