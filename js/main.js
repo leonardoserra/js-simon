@@ -23,16 +23,13 @@ numbersDom.innerHTML = numbersGenerated;
 
 setTimeout(function(){
     numbersDom.classList.add('d-none');
-}, 3000);
-// }, 30000);
+}, 30000);
 
 setTimeout(function(){
     numbersPrompted = askPromptReturnArray(5);
     console.log(numbersPrompted);
     verifyArray(numbersGenerated, numbersPrompted, guessedDom, missedDom);
-    
-}, 3100);
-// }, 31000);
+}, 31000);
  
 
 
