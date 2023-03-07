@@ -13,14 +13,18 @@
 const numbersDom = document.getElementById('numbers');
 const missedDom = document.getElementById('missed');
 const guessedDom = document.getElementById('guessed');
-
 let numbersGenerated = [];
+let numbersPrompted = [];
+
 numbersGenerated =  howManyNumbers(5, 1, 10);
 numbersDom.innerHTML = numbersGenerated;
+
+//dopo 30 secondi i numeri scompaiono
+
 setTimeout(function(){
     numbersDom.classList.add('d-none');
 }, 30000);
-let numbersPrompted = [];
+
 setTimeout(numbersPrompted = askPrompt(5), 310000);
  
 
