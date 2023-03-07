@@ -23,32 +23,45 @@ numbersDom.innerHTML = numbersGenerated;
 
 setTimeout(function(){
     numbersDom.classList.add('d-none');
-}, 30000);
+}, 3000);
 
-setTimeout(numbersPrompted = askPrompt(5), 310000);
+setTimeout(function(){
+    numbersPrompted = askPromptReturnArray(5);
+    console.log(numbersPrompted);
+    verifyArray(numbersGenerated, numbersPrompted);
+    
+}, 3100);
  
 
 
 
 
-
 console.log(numbersGenerated);
-console.log(numbersPrompted);
 
 
 
 //functions
 
 function verifyArray(array1, array2){
+    let guessed = 0;
+    let missed = 0;
     for(i = 0; i < array1.length; i++){
         if(array2.includes(array1[i])){
-
-
+            guessed++;
+            guessedDom.innerHTML += `ti sei ricordato il numero ${array1[i]}!<br>`
+            
+            if(i == array1.length - 1){
+                guessedDom.innerHTML += `hai indovinato ${guessed} numeri!<br>`
+                
+            }
+        }else if(!array2.includes(array1[i])){
+            missed++;
+            missedDom.innerHTML = `ti sei dimenticato ${missed} numeri`;
         }
     }
 }
 
-function askPrompt(howManyPrompt){
+function askPromptReturnArray(howManyPrompt){
     let numbersPrompted = [];
     for(i = 0; i < howManyPrompt; i++){
         numbersPrompted.push(parseInt(prompt('inserisci il numero:')));
