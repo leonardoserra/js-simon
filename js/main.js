@@ -23,16 +23,16 @@ numbersDom.innerHTML = numbersGenerated;
 
 setTimeout(function(){
     numbersDom.classList.add('d-none');
-// }, 3000);
-}, 30000);
+}, 3000);
+// }, 30000);
 
 setTimeout(function(){
     numbersPrompted = askPromptReturnArray(5);
     console.log(numbersPrompted);
-    verifyArray(numbersGenerated, numbersPrompted);
+    verifyArray(numbersGenerated, numbersPrompted, guessedDom, missedDom);
     
-// }, 3100);
-}, 31000);
+}, 3100);
+// }, 31000);
  
 
 
@@ -44,20 +44,20 @@ console.log(numbersGenerated);
 
 //functions
 
-function verifyArray(array1, array2){
+function verifyArray(array1, array2, domElement1, domElement2){
     let guessed = 0;
     let missed = 0;
     for(i = 0; i < array1.length; i++){
         if(array2.includes(array1[i])){
             guessed++;
-            guessedDom.innerHTML += `ti sei ricordato il numero ${array1[i]}!<br>`
+            domElement1.innerHTML += `ti sei ricordato il numero ${array1[i]}!<br>`
             
         }else if(!array2.includes(array1[i])){
             missed++;
         }
     }
-    guessedDom.innerHTML += `hai indovinato ${guessed} numeri!<br>`
-    missedDom.innerHTML = `ti sei dimenticato ${missed} numeri`;
+    domElement1.innerHTML += `hai indovinato ${guessed} numeri!<br>`
+    domElement2.innerHTML = `ti sei dimenticato ${missed} numeri`;
 }
 
 function askPromptReturnArray(howManyPrompt){
