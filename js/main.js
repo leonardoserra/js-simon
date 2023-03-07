@@ -50,15 +50,12 @@ function verifyArray(array1, array2){
             guessed++;
             guessedDom.innerHTML += `ti sei ricordato il numero ${array1[i]}!<br>`
             
-            if(i == array1.length - 1){
-                guessedDom.innerHTML += `hai indovinato ${guessed} numeri!<br>`
-                
-            }
         }else if(!array2.includes(array1[i])){
             missed++;
-            missedDom.innerHTML = `ti sei dimenticato ${missed} numeri`;
         }
     }
+    guessedDom.innerHTML += `hai indovinato ${guessed} numeri!<br>`
+    missedDom.innerHTML = `ti sei dimenticato ${missed} numeri`;
 }
 
 function askPromptReturnArray(howManyPrompt){
