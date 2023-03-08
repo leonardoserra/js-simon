@@ -24,12 +24,14 @@ numbersDom.innerHTML = numbersGenerated;
 setTimeout(function(){
     numbersDom.classList.add('d-none');
 }, 30000);
+// }, 3000);
 
 setTimeout(function(){
     numbersPrompted = askPromptReturnArray(5);
     console.log(numbersPrompted);
     verifyArray(numbersGenerated, numbersPrompted, guessedDom, missedDom);
 }, 31000);
+// }, 3100);
  
 
 
@@ -75,21 +77,32 @@ function askPromptReturnArray(howManyPrompt){
 
 function uniqueHowManyNumbers(quantity, min, max){
     let numbers = [];
+
     
-    for(i = 0; i < quantity; i++){
-        
-        let valid = false;
-        let randomNumberGenerated = 0;
-        while(!valid){
+        while(numbers.length < quantity){
             randomNumberGenerated = randomNumber(min, max);
             if(!numbers.includes(randomNumberGenerated)){
                 numbers.push(randomNumberGenerated);
-                valid = true;
             }
         }
 
-    }
     return numbers;
+    
+    
+    // for(i = 0; i < quantity; i++){
+        
+    //     let valid = false;
+    //     let randomNumberGenerated = 0;
+    //     while(!valid){
+    //         randomNumberGenerated = randomNumber(min, max);
+    //         if(!numbers.includes(randomNumberGenerated)){
+    //             numbers.push(randomNumberGenerated);
+    //             valid = true;
+    //         }
+    //     }
+
+    // }
+    // return numbers;
 }
 
 
